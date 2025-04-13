@@ -29,7 +29,7 @@ const Hero = () => {
     <section 
       id="home" 
       ref={heroRef}
-      className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-32 pb-16 overflow-hidden" /* Updated pt-20 to pt-32 to account for additional navbar height */
       style={{
         background: 'linear-gradient(to right, rgba(26, 32, 44, 0.85), rgba(26, 32, 44, 0.75)), url(https://images.unsplash.com/photo-1527856263669-12c3a0af2aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80)',
         backgroundSize: 'cover',

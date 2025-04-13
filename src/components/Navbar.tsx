@@ -10,6 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger
 } from '@/components/ui/navigation-menu';
+import ContactBar from './ContactBar';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,107 +54,113 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={cn(
-      "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-      isScrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-transparent"
-    )}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <a href="#" className="flex items-center">
-              <div className="w-10 h-10 bg-anthropology-600 rounded-full flex items-center justify-center mr-3 shadow-md hover:shadow-lg transition-all duration-300">
-                <span className="text-white font-serif font-bold text-lg">A</span>
-              </div>
-              <div>
-                <h1 className="text-lg sm:text-xl font-serif font-bold leading-tight">
-                  Departemen Antropologi
-                </h1>
-                <p className="text-xs sm:text-sm text-muted-foreground">Universitas Indonesia</p>
-              </div>
-            </a>
-          </div>
+    <header className="fixed top-0 left-0 w-full z-50">
+      {/* Contact bar */}
+      <ContactBar />
+      
+      {/* Main navigation */}
+      <div className={cn(
+        "transition-all duration-300",
+        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-transparent"
+      )}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <div className="flex items-center">
+              <a href="#" className="flex items-center">
+                <div className="w-10 h-10 bg-anthropology-600 rounded-full flex items-center justify-center mr-3 shadow-md hover:shadow-lg transition-all duration-300">
+                  <span className="text-white font-serif font-bold text-lg">A</span>
+                </div>
+                <div>
+                  <h1 className="text-lg sm:text-xl font-serif font-bold leading-tight">
+                    Departemen Antropologi
+                  </h1>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Universitas Indonesia</p>
+                </div>
+              </a>
+            </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:block">
-            <NavigationMenu>
-              <NavigationMenuList className="flex gap-1">
-                {mainNavLinks.map((link) => (
-                  <NavigationMenuItem key={link.name}>
-                    <NavigationMenuLink 
-                      href={link.href}
-                      className="nav-link"
-                    >
-                      {link.name}
-                    </NavigationMenuLink>
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:block">
+              <NavigationMenu>
+                <NavigationMenuList className="flex gap-1">
+                  {mainNavLinks.map((link) => (
+                    <NavigationMenuItem key={link.name}>
+                      <NavigationMenuLink 
+                        href={link.href}
+                        className="nav-link"
+                      >
+                        {link.name}
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  ))}
+                  
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-foreground hover:text-accent">Pendidikan</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[200px] gap-2 p-4">
+                        {educationLinks.map((link) => (
+                          <li key={link.name}>
+                            <NavigationMenuLink 
+                              href={link.href}
+                              className="block p-2 hover:bg-accent/10 rounded-md"
+                            >
+                              {link.name}
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
                   </NavigationMenuItem>
-                ))}
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground hover:text-accent">Pendidikan</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4">
-                      {educationLinks.map((link) => (
-                        <li key={link.name}>
-                          <NavigationMenuLink 
-                            href={link.href}
-                            className="block p-2 hover:bg-accent/10 rounded-md"
-                          >
-                            {link.name}
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground hover:text-accent">Orang</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4">
-                      {peopleLinks.map((link) => (
-                        <li key={link.name}>
-                          <NavigationMenuLink 
-                            href={link.href}
-                            className="block p-2 hover:bg-accent/10 rounded-md"
-                          >
-                            {link.name}
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+                  
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-foreground hover:text-accent">Orang</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[200px] gap-2 p-4">
+                        {peopleLinks.map((link) => (
+                          <li key={link.name}>
+                            <NavigationMenuLink 
+                              href={link.href}
+                              className="block p-2 hover:bg-accent/10 rounded-md"
+                            >
+                              {link.name}
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground hover:text-accent">Informasi</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4">
-                      {infoLinks.map((link) => (
-                        <li key={link.name}>
-                          <NavigationMenuLink 
-                            href={link.href}
-                            className="block p-2 hover:bg-accent/10 rounded-md"
-                          >
-                            {link.name}
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </nav>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-foreground hover:text-accent">Informasi</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[200px] gap-2 p-4">
+                        {infoLinks.map((link) => (
+                          <li key={link.name}>
+                            <NavigationMenuLink 
+                              href={link.href}
+                              className="block p-2 hover:bg-accent/10 rounded-md"
+                            >
+                              {link.name}
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </nav>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center p-2 rounded-md hover:bg-gray-100 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile menu button */}
+            <div className="lg:hidden">
+              <button 
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center p-2 rounded-md hover:bg-gray-100 transition-colors"
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
