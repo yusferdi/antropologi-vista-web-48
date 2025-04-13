@@ -41,7 +41,7 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(14, 47%, 35%)',
+					DEFAULT: 'hsl(8, 60%, 35%)',
 					foreground: 'hsl(0, 0%, 98%)'
 				},
 				popover: {
@@ -63,15 +63,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				anthropology: {
-					100: '#E6D8CC',
-					200: '#C4A084',
+					100: '#F0E0D6',
+					200: '#D6B3A2',
 					300: '#A47551',
-					400: '#8C5E3C',
-					500: '#5C4033',
-					600: '#4A3328',
-					700: '#3A2820',
-					800: '#2A1C16',
-					900: '#1A0E0A',
+					400: '#8C4033',
+					500: '#6B2E22',
+					600: '#5C2E22',
+					700: '#4A2820',
+					800: '#3A1C16',
+					900: '#2A0E0A',
 				}
 			},
 			borderRadius: {
