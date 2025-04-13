@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -42,8 +41,8 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: 'hsl(14, 47%, 35%)',
+					foreground: 'hsl(0, 0%, 98%)'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -64,15 +63,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				anthropology: {
-					100: '#E9EDF2',
-					200: '#BFCBD9',
-					300: '#8D9EB7',
-					400: '#5A728F',
-					500: '#3A4E68',
-					600: '#2A3A55',
-					700: '#1C2940',
-					800: '#111A2A',
-					900: '#080E18',
+					100: '#E6D8CC',
+					200: '#C4A084',
+					300: '#A47551',
+					400: '#8C5E3C',
+					500: '#5C4033',
+					600: '#4A3328',
+					700: '#3A2820',
+					800: '#2A1C16',
+					900: '#1A0E0A',
 				}
 			},
 			borderRadius: {
