@@ -1,2 +1,45 @@
 
-/* Custom global styles can go here */
+/* Custom global styles */
+
+/* Navigation dropdown styling */
+.navigation-dropdown {
+  @apply opacity-0 invisible absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-48 transition-all duration-200;
+}
+
+.navigation-dropdown.active {
+  @apply opacity-100 visible;
+}
+
+/* Enhanced glass effect for cards */
+.glass-effect {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+/* Improved hover effects */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* Fancy underline animation */
+.fancy-underline {
+  @apply relative inline-block;
+}
+
+.fancy-underline::after {
+  @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-accent transition-all duration-300;
+}
+
+.fancy-underline:hover::after {
+  @apply w-full;
+}
+
+/* Fix for the NavigationMenuLink in the NavigationMenu component */
+a.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+a.nav-link:hover {
+  color: hsl(var(--accent));
+}
