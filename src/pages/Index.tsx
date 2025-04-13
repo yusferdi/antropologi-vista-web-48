@@ -29,8 +29,33 @@ const Index = () => {
       }
     };
 
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const animateOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          animateOnScroll.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    elementsToAnimate.forEach(element => {
+      animateOnScroll.observe(element);
+    });
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      elementsToAnimate.forEach(element => {
+        animateOnScroll.unobserve(element);
+      });
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -57,7 +82,7 @@ const Index = () => {
       <button
         id="scroll-to-top"
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-anthropology-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-anthropology-700 focus:outline-none"
+        className="fixed bottom-6 right-6 bg-anthropology-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-anthropology-700 focus:outline-none hover:scale-110"
         aria-label="Scroll to top"
       >
         <ArrowUp size={24} />
