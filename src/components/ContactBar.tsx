@@ -1,10 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const ContactBar = () => {
   return (
-    <div className="bg-[#5C4033] text-white py-2 px-4">
+    <div className="bg-anthropology-600 text-white py-2 px-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4 text-sm">
           <a href="mailto:departemen_antropologi@ui.ac.id" className="flex items-center hover:text-gray-200 transition-colors">
@@ -19,6 +20,9 @@ const ContactBar = () => {
         </div>
         
         <div className="flex items-center space-x-3">
+          <Link to="/cluster/climate" className="text-white hover:text-gray-200 transition-colors text-xs px-2 py-1 bg-white/10 rounded-md">
+            Climate Cluster 🌍
+          </Link>
           <a href="#" className="text-white hover:text-gray-200 transition-colors" aria-label="Facebook">
             <Facebook size={14} />
           </a>

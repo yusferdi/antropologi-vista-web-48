@@ -63,6 +63,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				anthropology: {
+					50: '#FCF8F5',
 					100: '#F0E0D6',
 					200: '#D6B3A2',
 					300: '#A47551',
