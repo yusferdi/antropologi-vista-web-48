@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -10,8 +11,33 @@ import TeamSection from '@/components/cluster/TeamSection';
 import ActivitiesSection from '@/components/cluster/ActivitiesSection';
 import TopicsSection from '@/components/cluster/TopicsSection';
 
+// Define interfaces for better type safety
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+}
+
+interface Activity {
+  title: string;
+  image: string;
+  date: string;
+}
+
+interface Cluster {
+  id: string;
+  title: string;
+  description: string;
+  emoji: string;
+  longDescription: string;
+  teamMembers: TeamMember[];
+  activities: Activity[];
+  topics: string[];
+}
+
 // Mock data - in a real app, this would come from an API/database
-const clusterData = {
+const clusterData: Record<string, Cluster> = {
   "climate": {
     id: "climate",
     title: "Climate Change & Environmental Justice",
@@ -57,13 +83,44 @@ const clusterData = {
     title: "Digital Anthropology & Society",
     description: "This cluster investigates the intersection of technology and culture, examining how digital tools reshape social relations, identities, and cultural practices in contemporary societies.",
     emoji: "💻",
-    // Other fields would be populated similarly
+    longDescription: "Digital technologies are fundamentally changing human experience and social interactions across the globe. This research cluster applies anthropological perspectives to understand the complex relationships between people, technologies, and digital environments. We examine digital cultures, online communities, algorithmic governance, and the social implications of emerging technologies like AI, virtual reality, and social media platforms. Our research addresses both the opportunities and challenges of digital transformation, with attention to digital inequalities, ethics, and the ways different societies adapt, resist, or reimagine digital technologies.",
+    teamMembers: [
+      { name: "Dr. Budi Santoso", role: "Chair", image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80", bio: "Expert in digital ethnography and virtual communities." },
+      { name: "Dr. Lisa Wong", role: "Senior Fellow", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80", bio: "Researches digital inequalities and algorithmic governance." },
+      { name: "Dr. James Miller", role: "Senior Fellow", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80", bio: "Studies social media cultures and digital identity formation." },
+      { name: "Nia Dewi", role: "Junior Fellow", image: "https://images.unsplash.com/photo-1553682233-f8318218f466?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80", bio: "Focuses on digital activism in Southeast Asian contexts." }
+    ],
+    activities: [
+      { title: "Virtual Ethnography Workshop", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", date: "July 10-12, 2024" },
+      { title: "AI Ethics & Society Conference", image: "https://images.unsplash.com/photo-1586374579358-9d19d632b6d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", date: "August 22-23, 2024" },
+      { title: "Digital Divide Research Project", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", date: "September - December 2024" }
+    ],
+    topics: [
+      "Digital ethnography methods 📱",
+      "Social media cultures across societies 🌐",
+      "AI and algorithmic governance 🤖",
+      "Digital divides and inequalities 🔄",
+      "Online identity formation 👤",
+      "Digital activism and social movements 📢",
+      "Virtual communities and belonging 🧩",
+      "Gaming cultures and virtual worlds 🎮",
+      "The anthropology of platforms 📊",
+      "Digital labor and gig economies 💼",
+      "Smart cities and surveillance 🏙️",
+      "Digital memories and archives 📚",
+      "Cultural heritage in digital spaces 🏛️",
+      "Blockchain and alternative economies 💱",
+      "Digital rituals and religion online ✝️",
+      "Media ideologies and technology adoption 📺",
+      "Digital health and telemedicine 🏥",
+      "Ethics of emerging technologies 🔬"
+    ]
   }
 };
 
 const ClusterDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const cluster = clusterData[id as keyof typeof clusterData] || clusterData.climate; // Default to climate if not found
+  const cluster = id && clusterData[id] ? clusterData[id] : clusterData.climate; // Default to climate if not found
   
   useEffect(() => {
     // Scroll to top when component mounts

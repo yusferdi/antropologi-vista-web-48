@@ -17,7 +17,7 @@ const TopicsSection = ({ topics }: TopicsSectionProps) => {
       
       <div className="bg-anthropology-50 rounded-xl p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-          {topics.map((topic, index) => (
+          {topics && topics.map((topic, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, x: -10 }}
