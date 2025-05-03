@@ -1,10 +1,8 @@
-
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactBar from '@/components/ContactBar';
-import { Book, Calendar, Users } from 'lucide-react';
 import { ArrowUp } from 'lucide-react';
 import ClusterHero from '@/components/cluster/ClusterHero';
 import TeamSection from '@/components/cluster/TeamSection';
@@ -184,25 +182,25 @@ const ClusterDetail = () => {
       <main className="pt-16">
         <ClusterHero cluster={cluster} />
         
-        <div className="container mx-auto px-4 md:px-6 py-12">
-          <div className="animate-on-scroll max-w-4xl mx-auto mb-16">
+        <div className="container mx-auto px-4 md:px-6 py-16">
+          <div className="animate-on-scroll max-w-4xl mx-auto mb-20">
             <h2 className="text-3xl font-serif font-bold mb-6 flex items-center gap-3">
               <span className="text-4xl">{cluster.emoji}</span> About This Cluster
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-lg leading-relaxed mb-6">{cluster.longDescription}</p>
+              <p className="text-lg leading-relaxed text-gray-700">{cluster.longDescription}</p>
             </div>
           </div>
 
-          <div id="team" className="mb-24">
+          <div id="team" className="mb-28">
             <TeamSection teamMembers={cluster.teamMembers} />
           </div>
 
-          <div id="activities" className="mb-24">
+          <div id="activities" className="mb-28">
             <ActivitiesSection activities={cluster.activities} />
           </div>
 
-          <div id="topics" className="mb-16">
+          <div id="topics" className="mb-24">
             <TopicsSection topics={cluster.topics} />
           </div>
         </div>
@@ -213,7 +211,7 @@ const ClusterDetail = () => {
       <button
         id="scroll-to-top"
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-anthropology-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-anthropology-700 focus:outline-none hover:scale-110"
+        className="fixed bottom-8 right-8 bg-anthropology-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-anthropology-700 focus:outline-none hover:scale-110 z-50"
         aria-label="Scroll to top"
       >
         <ArrowUp size={24} />
